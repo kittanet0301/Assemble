@@ -1,0 +1,91 @@
+.pixel-office-base {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  image-rendering: pixelated;
+  z-index: 0;
+}
+.pixel-scene-prop {
+  position: absolute;
+  pointer-events: none;
+  isolation: isolate;
+}
+.pixel-scene-prop > img {
+  display: block;
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  max-width: none;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+.pixel-scene-desk {
+  pointer-events: auto;
+  background: none;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+.pixel-scene-desk:focus-visible {
+  outline: 2px dashed #395f51;
+  outline-offset: 4px;
+}
+.pixel-scene-desk:hover > img,
+.pixel-scene-desk:focus-visible > img {
+  filter: brightness(1.12);
+}
+.pixel-desk-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 132px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #5e4934;
+  background: #f7e5beee;
+  border: 1px solid #b99b71;
+  padding: 1px 5px;
+  font-size: 9px;
+  line-height: 12px;
+  letter-spacing: 0.4px;
+  pointer-events: none;
+}
+.my-desk .pixel-desk-label {
+  color: #fff7dc;
+  background: #416c59;
+  border-color: #294e3d;
+}
+.pixel-map-grid {
+  position: absolute;
+  z-index: 1800;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, #294f6444 1px, transparent 1px),
+    linear-gradient(to bottom, #294f6444 1px, transparent 1px);
+}
+.office-world:has(.pixel-office-base) {
+  image-rendering: pixelated;
+}
+.office-world:has(.pixel-office-base) .room-map-label {
+  z-index: 2000;
+  color: #f5e9cf;
+  background: #345b58ef;
+  border: 2px solid #244240;
+  border-radius: 3px;
+  padding: 5px 9px;
+  box-shadow: 0 2px 0 #172d2a44;
+  font-size: 11px;
+}
+.office-world:has(.pixel-office-base) .room-map-label .room-counter {
+  color: #e0d5bc;
+}
+.office-world:has(.pixel-office-base) .walk-marker {
+  z-index: 2100;
+}

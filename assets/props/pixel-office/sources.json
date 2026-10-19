@@ -1,0 +1,52 @@
+{
+  "workstation": {
+    "source": "workstation-source.png",
+    "generatedFile": "exec-1b69255f-f1df-4b9c-bde9-ffbaffef01e3.png",
+    "generator": "built-in image_gen"
+  },
+  "meeting": {
+    "source": "meeting-source.png",
+    "generatedFile": "exec-6b9e721a-69a7-446a-b5bf-7528cca45d5b.png",
+    "generator": "built-in image_gen"
+  },
+  "sofa": {
+    "source": "sofa-source.png",
+    "generatedFile": "exec-1ffa1af6-bf0f-4268-9b1b-55e2b696a27e.png",
+    "generator": "built-in image_gen"
+  },
+  "bookshelf": {
+    "source": "bookshelf-source.png",
+    "generatedFile": "exec-15278733-422c-46ee-b926-c0ff2044f8f6.png",
+    "generator": "built-in image_gen"
+  },
+  "coffee_table": {
+    "source": "coffee_table-source.png",
+    "generatedFile": "exec-e9730adc-5c32-4a59-8a30-1c7f170afaca.png",
+    "generator": "built-in image_gen"
+  },
+  "coffee_bar": {
+    "source": "coffee_bar-source.png",
+    "generatedFile": "exec-8ed25bab-97b5-4471-b5a6-215037adaf10.png",
+    "generator": "built-in image_gen"
+  },
+  "plant": {
+    "source": "plant-source.png",
+    "generatedFile": "exec-0670e3c2-dfa9-4880-9898-beaa9e3a7410.png",
+    "generator": "built-in image_gen"
+  },
+  "planter": {
+    "source": "planter-source.png",
+    "generatedFile": "exec-8590b8a2-a1f3-4fc9-b070-9c0998a16420.png",
+    "generator": "built-in image_gen"
+  },
+  "wall_horizontal": {
+    "source": "wall_horizontal-source.png",
+    "generatedFile": "exec-b19721d7-b62a-4854-b1e1-0705e48d4fc1.png",
+    "generator": "built-in image_gen"
+  },
+  "wall_vertical": {
+    "source": "wall_vertical-source.png",
+    "generatedFile": "exec-7d9e1e22-7ec2-4f97-a38d-1fe2c12be3fd.png",
+    "generator": "built-in image_gen"
+  }
+}

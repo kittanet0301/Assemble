@@ -1,0 +1,12 @@
+Use the visible ORIGINAL EMPTY FLOOR image immediately above as the exact visual reference and edit target. Make an in-world dressed-reference mockup of this same cozy pixel office. Preserve exactly the 1344x960 canvas, straight orthographic top-down RPG camera, warm honey oak boards, dark teal/cream floor borders, sage carpet in both upper corners, terracotta carpet in lower left, blue carpet in lower right, and the open central horizontal circulation lane. Do not redraw, rotate, crop or zoom the floor.
+Add at most NINE distinct types of visible runtime objects in matching crisp pixel-cluster art, dark brown contours, warm highlights, low detail density, designed for little 48x64 chibi pixel people. Furnish naturally with these exactly nine types:
+1 oak workstation desk with dark teal computer monitor, cream keyboard and a low sage rolling chair just below: repeated as four desks in upper-middle x528/744,y108/228, four in lower-middle x528/744,y636/756, two in upper-left x96/264,y108. Each desk about120x60, chair directly below.
+2 oval oak conference table with modest sage chairs: one in upper-right carpet x1056,y144; one in lower-right carpet x1056,y672; each furniture group about216x150.
+3 short terracotta three-seat sofa: two sofas facing one another on the lower-left rug at x96,y576 and x96,y756, each about216x60.
+4 low narrow oak bookshelf on the right edge of lower-left lounge near x336,y624, about60x144.
+5 small oval coffee table with one cup and a closed teal book at x174,y672, about108x42.
+6 low oak coffee counter with compact dark teal espresso machine at x192,y384, about192x60, along left side of circulation band, leaving the center clear.
+7 leafy broadleaf potted plant in terracotta pot, repeated sparingly at room corners and along map perimeter.
+8 low cream-and-teal modular office partition walls/window sections around the upper-left carpet and both right-hand meeting areas, with open passage gaps in their south/left sides matching the existing circulation; cutaway dollhouse walls only, never a roof.
+9 long low planter box with greenery along the middle-right hall at x1064,y404.
+No people or characters, no text, letters, signs, labels, circles, numbers, colored planning outlines, diagrams, UI, marker overlays, watermarks, camera bounds or spawn markers. The result is a natural game map REFERENCE MOCKUP only, props will subsequently be generated as separate sprites. Keep walkways legible and uncluttered.

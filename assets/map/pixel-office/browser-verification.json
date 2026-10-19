@@ -1,0 +1,17 @@
+{
+  "objects": 69,
+  "depthBehind": {
+    "actor": 468,
+    "plant": 521
+  },
+  "depthFront": {
+    "actor": 540,
+    "plant": 521
+  },
+  "seat": {
+    "x": 588,
+    "y": 204
+  },
+  "errors": [],
+  "failedImages": []
+}

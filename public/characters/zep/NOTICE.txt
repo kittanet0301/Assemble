@@ -1,0 +1,9 @@
+Source: ZEP avatar catalog https://zep.us/api/avatar/catalog?service=core
+PNG source pattern: https://zep.us/assets/sprites/{slot}/-{partId}.png?4
+Downloaded 2026-10-19 at the workspace owner's request.
+These are third-party ZEP graphics, not original Assemble artwork.
+No license permitting external redistribution has been verified.
+The catalog's free/purchase classification is not an external-use license.
+The acquisition mode and source identities are retained in shared/zep-catalog.json
+and research/zep-avatar/download-results.json. No credentials or purchase APIs
+were used. Scope: 2,224 public catalog part sheets, not all assets in the service.

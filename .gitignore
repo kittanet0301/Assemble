@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store/
+dist/
+.env
+.env.*
+!.env.example
+data/
+test-results/
+*.log
+__pycache__/
+*.pyc
+# Raw third-party application snapshots are local investigation inputs.
+research/zep-avatar/shipped/
+research/zep-fingw/members-public.html.txt

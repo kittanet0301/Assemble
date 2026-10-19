@@ -1,0 +1,131 @@
+{
+  "source": "Original ImageGen art, deterministic ZEP-compatible atlas assembly",
+  "frame_width": 48,
+  "frame_height": 64,
+  "hd_scale": 3,
+  "fps": 8,
+  "rows": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "columns": [
+    "idle",
+    "stride-left",
+    "idle",
+    "stride-right"
+  ],
+  "anims": {
+    "down": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "left": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "right": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "up": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "combinations": [
+    {
+      "hair": 0,
+      "shirt": 0,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 0,
+      "shirt": 1,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 0,
+      "shirt": 2,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 1,
+      "shirt": 0,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 1,
+      "shirt": 1,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 1,
+      "shirt": 2,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 2,
+      "shirt": 0,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 2,
+      "shirt": 1,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 2,
+      "shirt": 2,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 3,
+      "shirt": 0,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 3,
+      "shirt": 1,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    },
+    {
+      "hair": 3,
+      "shirt": 2,
+      "frames": 16,
+      "edge_touch": false,
+      "feet_baseline": 171
+    }
+  ]
+}

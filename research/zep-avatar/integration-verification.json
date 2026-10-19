@@ -1,0 +1,60 @@
+{
+  "appearance": {
+    "source": "zep",
+    "skin": 1,
+    "face": 21,
+    "clothes": 24,
+    "hair": 1348,
+    "mask": 0,
+    "glasses": 26
+  },
+  "directions": {
+    "หน้า": {
+      "frames": [
+        "-144px 0px",
+        "-192px 0px",
+        "-48px 0px",
+        "-96px 0px"
+      ],
+      "movingSamples": 16
+    },
+    "ซ้าย": {
+      "frames": [
+        "-144px -64px",
+        "-192px -64px",
+        "-48px -64px",
+        "-96px -64px"
+      ],
+      "movingSamples": 16
+    },
+    "ขวา": {
+      "frames": [
+        "-96px -128px",
+        "-144px -128px",
+        "-192px -128px",
+        "-48px -128px"
+      ],
+      "movingSamples": 16
+    },
+    "หลัง": {
+      "frames": [
+        "-96px -192px",
+        "-144px -192px",
+        "-192px -192px",
+        "-48px -192px"
+      ],
+      "movingSamples": 16
+    }
+  },
+  "mapMotion": {
+    "frames": [
+      "-192px -128px",
+      "-48px -128px",
+      "-96px -128px",
+      "-144px -128px"
+    ],
+    "movingSamples": 15
+  },
+  "errors": [],
+  "missing": []
+}

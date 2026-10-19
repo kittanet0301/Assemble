@@ -1,0 +1,282 @@
+[
+  {
+    "id": "workstation",
+    "sourceSize": [
+      1310,
+      1200
+    ],
+    "sourceCrop": [
+      223,
+      231,
+      1087,
+      1033
+    ],
+    "displaySize": [
+      120,
+      112
+    ],
+    "fileSize": [
+      122,
+      114
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/workstation.prompt.txt"
+  },
+  {
+    "id": "meeting",
+    "sourceSize": [
+      1476,
+      1065
+    ],
+    "sourceCrop": [
+      162,
+      144,
+      1314,
+      925
+    ],
+    "displaySize": [
+      216,
+      156
+    ],
+    "fileSize": [
+      218,
+      158
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/meeting.prompt.txt"
+  },
+  {
+    "id": "sofa",
+    "sourceSize": [
+      1998,
+      787
+    ],
+    "sourceCrop": [
+      393,
+      187,
+      1607,
+      617
+    ],
+    "displaySize": [
+      216,
+      90
+    ],
+    "fileSize": [
+      218,
+      92
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/sofa.prompt.txt"
+  },
+  {
+    "id": "bookshelf",
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "sourceCrop": [
+      270,
+      331,
+      621,
+      1475
+    ],
+    "displaySize": [
+      60,
+      160
+    ],
+    "fileSize": [
+      62,
+      162
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/bookshelf.prompt.txt"
+  },
+  {
+    "id": "coffee_table",
+    "sourceSize": [
+      1710,
+      919
+    ],
+    "sourceCrop": [
+      428,
+      272,
+      1345,
+      696
+    ],
+    "displaySize": [
+      108,
+      58
+    ],
+    "fileSize": [
+      110,
+      60
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/coffee_table.prompt.txt"
+  },
+  {
+    "id": "coffee_bar",
+    "sourceSize": [
+      2048,
+      768
+    ],
+    "sourceCrop": [
+      272,
+      154,
+      1843,
+      616
+    ],
+    "displaySize": [
+      192,
+      72
+    ],
+    "fileSize": [
+      194,
+      74
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/coffee_bar.prompt.txt"
+  },
+  {
+    "id": "plant",
+    "sourceSize": [
+      1070,
+      1470
+    ],
+    "sourceCrop": [
+      129,
+      239,
+      998,
+      1247
+    ],
+    "displaySize": [
+      64,
+      88
+    ],
+    "fileSize": [
+      66,
+      90
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/plant.prompt.txt"
+  },
+  {
+    "id": "planter",
+    "sourceSize": [
+      1556,
+      1011
+    ],
+    "sourceCrop": [
+      138,
+      359,
+      1419,
+      744
+    ],
+    "displaySize": [
+      192,
+      64
+    ],
+    "fileSize": [
+      194,
+      66
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/planter.prompt.txt"
+  },
+  {
+    "id": "wall_horizontal",
+    "sourceSize": [
+      2048,
+      768
+    ],
+    "sourceCrop": [
+      269,
+      224,
+      1776,
+      519
+    ],
+    "displaySize": [
+      96,
+      36
+    ],
+    "fileSize": [
+      98,
+      38
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/wall_horizontal.prompt.txt"
+  },
+  {
+    "id": "wall_vertical",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "sourceCrop": [
+      463,
+      128,
+      561,
+      1415
+    ],
+    "displaySize": [
+      16,
+      96
+    ],
+    "fileSize": [
+      18,
+      98
+    ],
+    "gutter": 1,
+    "alpha": [
+      0,
+      255
+    ],
+    "edge_touch": false,
+    "prompt": "assets/props/pixel-office/wall_vertical.prompt.txt"
+  }
+]

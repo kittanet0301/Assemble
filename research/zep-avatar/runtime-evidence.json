@@ -1,0 +1,133 @@
+{
+  "evidence_id": "ev_818611552fd7d4f4894846a3dc127418c76495856ea0e971d4076dabd686e75d",
+  "target": "https://zep.us/play/GpXAaQ",
+  "operation": "capture_browser_scenario",
+  "authority": "controlled-replay",
+  "limitations": [
+    "Artifact identity is unavailable for this observation.",
+    "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+    "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+    "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+    "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+    "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+    "Storage values are hashed only after declared-secret redaction.",
+    "Browser host platform and architecture were not observed."
+  ],
+  "events": [
+    {
+      "sequence": 164,
+      "url": "https://zep.us/api/avatar/catalog?service=core",
+      "status": 200
+    },
+    {
+      "sequence": 260,
+      "url": "https://cdn-static.zep.us/static/assets/baked-avartar-images/1-1-1-1.png",
+      "status": 200
+    },
+    {
+      "sequence": 708,
+      "url": "https://zep.us/assets/sprites/skin/-2.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 710,
+      "url": "https://zep.us/assets/sprites/clothes/-776.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 712,
+      "url": "https://zep.us/assets/sprites/face/-6.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 714,
+      "url": "https://zep.us/assets/sprites/hair/-89.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 716,
+      "url": "https://zep.us/assets/sprites/hair/-745.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 720,
+      "url": "https://zep.us/assets/sprites/hair/-649.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 722,
+      "url": "https://zep.us/assets/sprites/glasses/-24.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 724,
+      "url": "https://zep.us/assets/sprites/skin/-1.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 726,
+      "url": "https://zep.us/assets/sprites/clothes/-162.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 728,
+      "url": "https://zep.us/assets/sprites/face/-73.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 730,
+      "url": "https://zep.us/assets/sprites/face/-69.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 732,
+      "url": "https://zep.us/assets/sprites/hair/-1106.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 734,
+      "url": "https://zep.us/assets/sprites/clothes/-104.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 736,
+      "url": "https://zep.us/assets/sprites/glasses/-25.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 738,
+      "url": "https://zep.us/assets/sprites/face/-46.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 740,
+      "url": "https://zep.us/assets/sprites/avatar/12-33-66-178.png",
+      "status": 200
+    },
+    {
+      "sequence": 749,
+      "url": "https://zep.us/assets/sprites/clothes/-539.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 751,
+      "url": "https://zep.us/assets/sprites/face/-80.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 753,
+      "url": "https://zep.us/assets/sprites/clothes/-231.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 755,
+      "url": "https://zep.us/assets/sprites/hair/-3.png?4",
+      "status": 200
+    },
+    {
+      "sequence": 819,
+      "url": "https://cdn-static.zep.us/static/assets/baked-avartar-images/12-33-66-178.png",
+      "status": 200
+    }
+  ]
+}

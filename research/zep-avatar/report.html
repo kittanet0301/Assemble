@@ -1,0 +1,33 @@
+<!doctype html><html lang="th"><meta charset="utf-8"><title>ZEP avatar inspection</title>
+<style>body{font:17px/1.7 system-ui;max-width:1000px;margin:40px auto;padding:0 24px;color:#223}img{max-width:100%;image-rendering:pixelated}table{border-collapse:collapse}td,th{border:1px solid #ccd;padding:8px}code{background:#eef;padding:2px}small{overflow-wrap:anywhere}</style>
+<h1>ตัวละคร ZEP สร้างอย่างไร และดึงภาพได้ไหม</h1>
+<p>ตรวจ 19 ตุลาคม 2026 จาก <a href="https://zep.us/play/GpXAaQ">FinGW บน ZEP</a> ด้วย REA controlled browser scenario ใน Chrome profile ชั่วคราว และอ่าน JavaScript ที่หน้าโหลดจริง</p>
+<p><strong>ดึงภาพได้จริง:</strong> บันทึก PNG ตัวละครสำเร็จ แยก 36 เฟรม และทดลองประกอบภาพจาก 4 ชั้นสำเร็จ ต่อมาเจ้าของ workspace สั่งดาวน์โหลดและนำไปใช้ จึงดาวน์โหลดครบ 2,224 ไฟล์ตาม catalog (25,714,774 ไบต์) และเชื่อมเข้าระบบตัวละครของ Assemble แล้ว รูปอยู่ใน ../../public/characters/zep/ และผลดาวน์โหลดพร้อม SHA-256 อยู่ใน <a href="download-results.json">download-results.json</a></p>
+<p>หน้าแต่งตัวเลือกแบบและสีได้ทุกแบบใน catalog พร้อมพรีวิวสี่ทิศ บันทึกผ่าน API เดิมและแสดงในโปรไฟล์/รายชื่อ/แชต/แผนที่ รูปต้นฉบับเก็บครบทุกเฟรม ส่วน renderer ใช้ยืนและเดินสี่ทิศ ผลตรวจ Chrome จริงอยู่ใน <a href="integration-verification.json">integration-verification.json</a> และ <a href="../../docs/preview/zep-integrated.png">ภาพหน้าจอ</a> TypeScript, production build และ 33 tests ผ่าน สิทธิ์การใช้งานภายนอกยังไม่ยืนยัน</p>
+<img src="samples/preview.png" alt="ภาพตัวละครจริงที่ดึงมา แสดงครบ 36 เฟรม ขยายสองเท่า">
+<h2>วิธีสร้างที่พบ</h2>
+<p>ตัวละครมาตรฐานเป็นภาพ 2D sprite sheet ไม่ใช่โมเดล 3D โค้ดฝั่งเว็บใช้ Phaser มีทั้งแบบ preset ที่โหลด PNG รวมสำเร็จ และแบบ individual ที่โหลดชิ้นส่วนแล้ววาดทับบน Canvas ตามลำดับ <code>skin → face → clothes → hair → mask → glasses</code> จากนั้นลงทะเบียนเป็น sprite sheet เฟรมละ 48×64 พิกเซล Canvas ขนาด 432×256 จึงมี 9 คอลัมน์ × 4 แถว รวม 36 เฟรม</p>
+<p>Catalog สาธารณะมี categories, shapes, parts, partId, hex, imageVersion และ acquisitionMode ตัวเลือกสีสัมพันธ์กับ partId ของรูป ไม่ควรสรุปว่าเว็บย้อมสีทุกชิ้นด้วย shader จากค่า hex ในการตรวจครั้งนี้ รูปทรงใน catalog: hair 117, clothes 83, face 80, skin 13, glasses 13 และ mask 0 รายการ มีทั้ง free และ purchase คำว่า free ใน catalog ยังไม่ได้ยืนยันสิทธิ์นำไปใช้ภายนอก</p>
+<p>พบเส้นทางแยกสำหรับ NFT ที่โหลด JSON ระบุ image/frame_width/frame_height ด้วย แต่ไม่ได้ทดสอบ avatar ประเภทนั้น</p>
+<h2>ลำดับ animation ที่อ่านจาก bundle ปัจจุบัน</h2>
+<table><tr><th>ท่า</th><th>เลขเฟรม เริ่มที่ 0 เรียงซ้ายไปขวา</th></tr>
+<tr><td>ยืนนิ่ง หน้า / ซ้าย / ขวา / หลัง</td><td>0 / 5 / 10 / 15</td></tr>
+<tr><td>เดิน หน้า / ซ้าย / ขวา / หลัง</td><td>1–4 / 6–9 / 11–14 / 16–19</td></tr>
+<tr><td>เต้น</td><td>20–27</td></tr><tr><td>กระโดด หน้า / ซ้าย / ขวา / หลัง</td><td>28 / 29 / 30 / 31</td></tr>
+<tr><td>นั่ง หน้า / ซ้าย / ขวา / หลัง</td><td>32 / 33 / 34 / 35</td></tr></table>
+<p>animation definitions ระบุ 8 fps; ท่ายืนนิ่งและนั่งใช้เฟรมเดียว ข้อมูลนี้มาจากโค้ด shipped bundle ไม่ได้พิสูจน์ทุกท่าด้วยการกดเล่นจริง รูปแบบตัวอย่าง Blueman ในเอกสารอาจใช้จำนวนเฟรมต่างกัน จึงไม่ควรยึด layout ของ tutorial แทนไฟล์จริง</p>
+<h2>ไฟล์ที่ดึงไว้</h2>
+<ul><li><a href="samples/avatar-12-33-66-178.png">PNG preset ต้นฉบับ 432×256 พื้นหลังโปร่งใส</a></li>
+<li><a href="samples/composed-example.png">ภาพทดลองประกอบจาก skin -2, face -69, clothes -776, hair -745</a> (คนละชุดกับ preset ข้างบน)</li>
+<li><a href="samples/frames/frame-00.png">เฟรมยืนด้านหน้า 48×64</a> — ใน samples/frames มีครบ 36 ไฟล์</li>
+<li><a href="extract-samples.ps1">สคริปต์แยกเฟรมและประกอบตัวอย่าง</a>, <a href="sample-hashes.json">SHA-256 ของภาพ</a></li>
+<li><a href="catalog.json">catalog ที่ดาวน์โหลด</a>, <a href="download-manifest.json">URL ของชิ้นส่วนและ scripts ที่โหลดจริง</a></li></ul>
+<p>เส้นทางที่ยืนยัน: <code>/assets/sprites/avatar/12-33-66-178.png</code> สำหรับ preset, <code>/assets/sprites/{slot}/{id}.png?4</code> สำหรับชั้นแยก และภาพโปรไฟล์บน CDN ใน <code>/static/assets/baked-avartar-images/</code> การมี URL รูปโปรไฟล์ไม่ได้แปลว่าเป็น animation sheet เดียวกัน รอบแรกตรวจเฉพาะตัวอย่าง ต่อมาดาวน์โหลด part PNG ครบ catalog ตามคำขอ โดยไม่ได้เรียกซื้อสินค้า ใช้ credentials หรือแก้สิทธิ์ในบัญชี ZEP</p>
+<h2>นำไปใช้งานได้แค่ไหน</h2>
+<p>ทางเทคนิคสามารถใช้ PNG นี้กับ renderer ที่รองรับ sprite sheet หรือแยกเป็นภาพเดี่ยวได้ทันที แต่ยังไม่พบหลักฐานการให้สิทธิ์นำกราฟิกตัวละครของ ZEP ไปใช้ในเว็บหรือเกมภายนอก การดาวน์โหลดสำเร็จหรือรายการเป็น free ไม่ใช่หลักฐาน license สำหรับใช้นอกบริการ เอกสารทางการ <a href="https://docs.zep.us/zep-script/zep-script-guide/explore-zep-script/tutorials/changing-avatar-image">Changing Avatar Image</a> ก็เตือนเรื่องลิขสิทธิ์ของภาพที่ไม่ได้สร้างเอง จึงควรขอเงื่อนไขสิทธิ์จาก ZEP ก่อนนำไฟล์เหล่านี้ไปเผยแพร่ในผลิตภัณฑ์</p>
+<p>สำหรับ Assemble ใช้แนวทางเดียวกันได้โดยวาดชิ้นส่วนเอง แล้วรวมชั้นตาม frame layout นี้ จะได้ระบบแต่งตัวและ animation โดยใช้ asset ที่มีสิทธิ์ชัดเจน</p>
+<h2>หลักฐานและขอบเขต</h2>
+<p><a href="runtime-evidence.json">สรุป network evidence</a> เก็บเฉพาะ response ที่เกี่ยวกับ avatar ไม่ใช่ bundle ครบชุด ภายในมี URL และสถานะ HTTP 200 ที่โหลดจริง; <a href="source-excerpts.json">ข้อความโค้ดพร้อม character offset</a> เก็บ class lh (Canvas composer), lm (layer loader), ly (preset/individual/NFT route) และ animation definitions ใน shipped/876.be6f659a7165c94e.js</p>
+<small>Runtime Evidence: ev_818611552fd7d4f4894846a3dc127418c76495856ea0e971d4076dabd686e75d<br>Static parent Evidence: ev_8fc84a254078746edfffc6b54b968c9ebbc09726ce49c8036355089904d8df66<br>Static summary Evidence: ev_b6efab4bfd52d9023edb5dc99aef4a47a09811e39df84c0015aa15cf03081b12<br>Bundle SHA-256: ADFE1EDC1C035EE4DDEF1CA6731F7667E74BE7191F15A52FF4E96801DA3FB4CA</small>
+<p>Static REA วิเคราะห์เฉพาะหนึ่ง bundle จากไฟล์ที่เก็บ 21 ไฟล์ parse สำเร็จ แต่ semantic graph จำกัด 1,000 nodes และมี coverage partial; ข้อสรุปการประกอบและเลขเฟรมตรวจข้อความโค้ดตรงเพิ่มเติม ไม่อ้างว่าถอดระบบทั้งหมดครบ ไม่ได้ตรวจ backend ที่สร้างรูป preset, ไฟล์ต้นฉบับงานวาด หรือ license ภายนอก และไม่ได้ทดสอบ animation ทุกท่าผ่าน UI</p>
+</html>

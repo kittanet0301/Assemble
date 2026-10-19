@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FinGW — ผลประเมินการสร้างแอป</title>
+<style>body{font:16px/1.75 system-ui,sans-serif;color:#20302e;background:#f4f6f3;margin:0}main{max-width:1050px;margin:auto;padding:40px 24px 80px}h1,h2{line-height:1.4}h1{font-size:32px}h2{margin-top:32px;font-size:23px}.lead{font-size:21px;background:#e0f1e8;padding:20px;border-radius:12px}img{display:block;width:100%;border-radius:12px}table{border-collapse:collapse;width:100%;background:white}td,th{text-align:left;vertical-align:top;border:1px solid #d7dfd9;padding:12px}th{background:#e9eeea}a{color:#285eb4}code{overflow-wrap:anywhere;background:#e9eeea;padding:2px 4px}.note{color:#51635a}figure{margin:24px 0}figcaption{font-size:14px;color:#51635a}pre{white-space:pre-wrap;background:#e9eeea;padding:18px;border-radius:8px}li{margin:7px 0}</style>
+<main>
+<p class="note">ตรวจเมื่อ 18 ตุลาคม 2026 · เป้าหมาย <a href="https://zep.us/play/GpXAaQ">zep.us/play/GpXAaQ</a> · REA + เอกสารทางการ</p>
+<h1>FinGW: สร้างแอปแบบนี้ได้ไหม?</h1>
+<p class="lead"><strong>สร้างประสบการณ์และฟังก์ชันลักษณะเดียวกันได้</strong> หลักฐานชี้ว่าเป็นพื้นที่สำนักงานบน ZEP พร้อมแอป Office ที่ใช้ HTML widget การสร้างบน ZEP ใช้ความสามารถของแพลตฟอร์มได้มาก ส่วนการสร้างเว็บอิสระต้องพัฒนาระบบเกมและการสื่อสารเพิ่ม การตรวจนี้ยังไม่ใช่แอปที่สร้างเสร็จ และยังยืนยันการทำซ้ำทุกฟังก์ชันแบบ 1:1 ไม่ได้</p>
+<figure><img src="initial.png" alt="ภาพจากเบราว์เซอร์ที่เปิดพื้นที่ FinGW ผ่าน REA"><figcaption>ภาพจริงจาก REA: แผนที่สำนักงาน อวาตาร์ Employees List สถานะ WFH และแถบสื่อสาร · E1</figcaption></figure>
+<h2>สิ่งที่ตรวจพบ และระดับหลักฐาน</h2>
+<table><thead><tr><th>ส่วนประกอบ</th><th>หลักฐานที่พบ</th><th>ขอบเขตข้อสรุป</th></tr></thead><tbody>
+<tr><td>สำนักงาน 2D และอวาตาร์</td><td>เปิดพื้นที่ได้ในเบราว์เซอร์แบบ guest เห็นเฟอร์นิเจอร์ อวาตาร์ และชื่อ FinGW; DOM มี Canvas · E1</td><td>ยืนยันการแสดงผล ไม่ได้ทดสอบ collision และทุกพื้นที่</td></tr>
+<tr><td>รายชื่อสมาชิก / WFH / My Seat</td><td>เห็นแผง Employees List บนหน้าจอ และ iframe ของ <code>members.html</code> · E1</td><td>ยืนยันหน้าจอที่ปรากฏ</td></tr>
+<tr><td>ค้นหาและสถานะเพิ่มเติม</td><td>โค้ด widget มีตัวกรองชื่อ และสถานะ WFH, office, away, focus, lunch, vacation, lounge, meeting ฯลฯ · E3</td><td>ยืนยันว่ามีโค้ดรองรับ ไม่ได้ทดสอบการบันทึกสถานะทั้งหมด</td></tr>
+<tr><td>กลับที่นั่ง / ไปหาผู้เล่น / เรียกผู้เล่น / ข้อความส่วนตัว / โปรไฟล์</td><td>พบ message types <code>myseat</code>, <code>moveToPlayer</code>, <code>summonPlayer</code>, <code>requestDirectMessage</code>, <code>requestShowProfile</code> · E3</td><td>เป็นคำสั่งที่ widget ส่งไปยัง parent ผ่าน postMessage ยังไม่ยืนยันผลปลายทางหรือสิทธิ์ที่ต้องใช้</td></tr>
+<tr><td>ไมค์ กล้อง แชร์หน้าจอ แชต</td><td>พบปุ่มบนหน้าจอ และ WebSocket ไปยัง LiveKit กับ game server · E1</td><td>ยืนยัน UI และการเชื่อมต่อ ไม่ได้โทร ส่งข้อความ หรือแชร์หน้าจอจริง</td></tr>
+<tr><td>โครงสร้างเว็บ</td><td>พบ Next.js chunks, Canvas, map background/foreground requests และ HTML widget iframe · E1</td><td>ยืนยันโครงสร้างที่ browser โหลด ไม่ทราบซอร์สและการออกแบบ backend ทั้งหมด</td></tr>
+<tr><td>การเดิน</td><td>REA ส่ง ArrowUp และ ArrowRight สำเร็จ · E2</td><td>ภาพที่จับทันทีไม่เพียงพอยืนยันระยะการเคลื่อนที่และการซิงก์กับผู้เล่นอื่น</td></tr>
+</tbody></table>
+<h2>แนวทางสร้าง</h2>
+<table><thead><tr><th>ทางเลือก</th><th>งานที่ต้องทำ</th><th>เหมาะเมื่อ</th></tr></thead><tbody>
+<tr><td><strong>สร้างบน ZEP</strong></td><td>สร้างแผนที่ของเรา ตั้งค่า Office/พื้นที่ประชุม และเขียน ZEP Script + HTML widgets เฉพาะส่วนที่ต้องเพิ่ม ใช้ระบบ avatar, multiplayer และการสื่อสารของแพลตฟอร์ม</td><td>ต้องการใช้งานออฟฟิศเสมือนโดยลดงานสร้างโครงสร้างพื้นฐาน ต้องมี Space และสิทธิ์แก้ไข พร้อมตรวจเงื่อนไขฟีเจอร์ของบัญชี</td></tr>
+<tr><td><strong>สร้างเว็บของเราเอง</strong></td><td>ข้อเสนอออกแบบ: React สำหรับ UI; Phaser หรือ PixiJS สำหรับฉาก 2D; game server ผ่าน WebSocket; WebRTC/LiveKit สำหรับเสียง วิดีโอ และแชร์หน้าจอ; backend/ฐานข้อมูลสำหรับสมาชิก สถานะ และที่นั่ง</td><td>ต้องการควบคุม UI ข้อมูล และระบบทั้งหมด โดยยอมรับงานพัฒนา ดูแลเซิร์ฟเวอร์ และทดสอบระบบหลายผู้ใช้เพิ่ม</td></tr>
+</tbody></table>
+<p>รายการเทคโนโลยีสำหรับเว็บอิสระเป็นข้อเสนอของผู้วิเคราะห์ ไม่ใช่ข้อสรุปว่า FinGW ใช้ชุดเดียวกันทั้งหมด เอกสาร ZEP ยืนยันความสามารถด้าน widgets, ผู้เล่น, events และ HTTP APIs: <a href="https://docs.zep.us/zep-script/zep-script-api/api-summary">API Summary</a>, <a href="https://docs.zep.us/zep-script/zep-script-api/scriptapp/methods">ScriptApp methods</a> ส่วนความสามารถ Office อธิบายไว้ใน <a href="https://blog.zep.us/en/user-guide/zep-office-%F0%9F%92%BC-for-every-team-leader-who-wants-to-work-from-home/">คู่มือ ZEP Office</a></p>
+<h2>ขอบเขตเวอร์ชันแรกที่เสนอ</h2>
+<ol><li>แผนที่สำนักงานหนึ่งแห่ง อวาตาร์ ชื่อผู้ใช้ และขอบเขตเดินชน</li><li>ผู้เล่นหลายคน เห็นตำแหน่งร่วมกัน รายชื่อสมาชิก และสถานะ WFH / office / away / focus</li><li>แชต ที่นั่งประจำ และพื้นที่ประชุม</li><li>เพิ่มไมค์ กล้อง แชร์หน้าจอ และการเชื่อมระบบบริษัทตามความต้องการจริง</li></ol>
+<p>สำหรับเว็บอิสระ ควรพิสูจน์การซิงก์ตำแหน่งและการประชุมพร้อมกันตั้งแต่ต้น ก่อนขยายจำนวนผู้ใช้ ยังไม่ควรระบุระยะเวลาหรืองบประมาณตายตัวจนทราบจำนวนผู้ใช้พร้อมกัน ฟีเจอร์จำเป็น เป้าหมายมือถือ และเส้นทาง ZEP หรือเว็บอิสระ</p>
+<h2>สิ่งที่ยังไม่ทราบ</h2>
+<ul><li>โค้ด script ฝั่ง ZEP ของแอปเป้าหมาย ฐานข้อมูล การยืนยันตัวตน และกติกาสิทธิ์ฝั่ง server</li><li>ผลการใช้ My Seat, summon, direct message, การเปลี่ยนสถานะ และการประชุมจริง ไม่ได้เรียกคำสั่งที่กระทบผู้ใช้อื่น</li><li>ความจุผู้ใช้พร้อมกัน ประสิทธิภาพ และความเข้ากันได้บนมือถือ</li><li>สิทธิ์นำแผนที่ รูป และโค้ดต้นฉบับมาใช้ซ้ำ การสร้างใหม่ควรใช้ asset ของเราเองหรือที่มีสิทธิ์ใช้ การเห็นไฟล์ที่ browser โหลดไม่เท่ากับมีสิทธิ์ใช้ซ้ำ</li></ul>
+<p>ระบบตรวจอนุมัติอัตโนมัติปฏิเสธการเก็บ response bodies ของเครือข่ายทั้งหมด เนื่องจากอาจรวมข้อมูลผู้ใช้หรือเซสชัน การประเมินจึงใช้ภาพหน้าจอ DOM ข้อมูลการเชื่อมต่อ และ DOM ของ widget สาธารณะที่ระบุเจาะจง ไม่มีการเก็บ response bodies แบบครอบคลุม</p>
+<h2>หลักฐานสำหรับตรวจต่อ</h2>
+<p><a href="evidence-summary.json">สรุปหลักฐาน REA</a> · <a href="members-public.html.txt">DOM และสคริปต์ของ widget สาธารณะ (ไฟล์ข้อความ)</a> · <a href="initial.png">ภาพหน้าจอ</a></p>
+<p class="note">ไฟล์สรุปเป็นข้อมูลที่คัดเลือกจาก REA ไม่ใช่ bundle ต้นฉบับครบชุด ตัด payloads และข้อมูลเซสชันที่ไม่จำเป็นออก เก็บ Evidence IDs เพื่ออ้างอิงผลต้นฉบับภายในเซสชันนี้</p>
+<pre>E1: ev_63182fc49da7f6c978e49fcf5934a7c74c12f9e90cb243ebf510cda75ab1d14d
+E2: ev_513eddd11efaacd8b14ca613c5dab2551f63495b12c02ee0856f6d8237e01816
+E3: ev_13525b9c2e2ec71e0ec62ea3ccc445fec1a4d84bcf8af1e7cfd2ce0daba7acc3</pre>
+<p class="note">ทั้งสามรายการเป็น capture_browser_scenario / controlled-replay โดย REA เปิด Chrome ชั่วคราวและรายงาน terminated-owned-process หลังจบ E3 แสดง widget โดยไม่มีข้อมูล init จาก parent จึงใช้ตรวจโครงสร้างโค้ด ไม่ใช่สถานะสมาชิกจริง</p>
+<p>เอกสารประกอบเพิ่มเติม: <a href="https://docs.zep.us/zep-script/zep-script-guide/zep-script-development-guide/zep-script-deployment-guide">การติดตั้งสคริปต์</a>, <a href="https://docs.zep.us/zep-script/zep-script-api/scriptapp/storage">การจัดเก็บข้อมูลและข้อควรระวังเมื่อใช้หลายแผนที่</a></p>
+</main></html>

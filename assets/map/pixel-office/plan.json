@@ -1,0 +1,164 @@
+{
+  "map_mode": "scene_mode",
+  "visual_model": "layered_raster",
+  "runtime_object_model": [
+    "y_sorted_props",
+    "interactive_scene_objects",
+    "scene_hooks"
+  ],
+  "collision_model": [
+    "precise_shapes",
+    "trigger_zones"
+  ],
+  "engine_target": "project-native",
+  "art_style": "pixel_inspired",
+  "mapSize": {
+    "width": 1344,
+    "height": 960
+  },
+  "cellSize": 24,
+  "actorSize": {
+    "width": 48,
+    "height": 64
+  },
+  "objects": [
+    {
+      "id": "workstation",
+      "classification": "collision_bearing_object",
+      "strategy": "one_by_one",
+      "position": [
+        528,
+        108
+      ],
+      "size": [
+        120,
+        110
+      ],
+      "collision": "DESKS tabletop only; seat stays reachable"
+    },
+    {
+      "id": "meeting",
+      "classification": "collision_bearing_object",
+      "strategy": "one_by_one",
+      "position": [
+        1056,
+        144
+      ],
+      "size": [
+        216,
+        156
+      ],
+      "collision": "ROOMS tabletop"
+    },
+    {
+      "id": "sofa",
+      "classification": "wide_or_long_object",
+      "strategy": "one_by_one",
+      "position": [
+        96,
+        576
+      ],
+      "size": [
+        216,
+        90
+      ],
+      "collision": "FURNITURE"
+    },
+    {
+      "id": "bookshelf",
+      "classification": "tall_or_large_object",
+      "strategy": "one_by_one",
+      "position": [
+        336,
+        624
+      ],
+      "size": [
+        60,
+        144
+      ],
+      "collision": "FURNITURE bookshelf footprint"
+    },
+    {
+      "id": "coffee_table",
+      "classification": "collision_bearing_object",
+      "strategy": "one_by_one",
+      "position": [
+        174,
+        672
+      ],
+      "size": [
+        108,
+        58
+      ],
+      "collision": "FURNITURE"
+    },
+    {
+      "id": "coffee_bar",
+      "classification": "wide_or_long_object",
+      "strategy": "one_by_one",
+      "position": [
+        192,
+        384
+      ],
+      "size": [
+        192,
+        72
+      ],
+      "collision": "FURNITURE"
+    },
+    {
+      "id": "plant",
+      "classification": "compact_prop",
+      "strategy": "one_by_one",
+      "position": [
+        72,
+        384
+      ],
+      "size": [
+        64,
+        88
+      ],
+      "collision": "PLANTS pot bases"
+    },
+    {
+      "id": "planter",
+      "classification": "collision_bearing_object",
+      "strategy": "one_by_one",
+      "position": [
+        1064,
+        404
+      ],
+      "size": [
+        80,
+        58
+      ],
+      "collision": "FURNITURE"
+    },
+    {
+      "id": "walls",
+      "classification": "tileset_or_strip_piece",
+      "strategy": "one_by_one horizontal and vertical modules",
+      "position": "OBSTACLES wall rectangles",
+      "size": "horizontal96x36; vertical16x96",
+      "collision": "explicit existing wall segments, leave door gaps open"
+    }
+  ],
+  "runtimeLayers": [
+    "base",
+    "y-sorted props + players",
+    "room and desk UI",
+    "optional debug grid"
+  ],
+  "prompts": {
+    "workstation": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE workstation from the upper-middle desk in the dressed reference: rectangular oak desk seen from above and front, dark teal computer monitor centered on back edge, cream small keyboard, mouse on right, tiny succulent on left, square wooden legs. Include its low sage green rolling chair centered just below the front of desk. The monitor points toward the bottom of the image; the chair's seat is visible, viewed from above. Composition width120 height110 in game units, tabletop occupies upper70%, chair lower30%, chair feet centered at x60,y100. Do not merge any neighboring desks. Flat horizontal desk, centered frontal alignment.",
+    "meeting": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE complete conference furniture group from the right-hand meeting room in the dressed reference: horizontally oriented oval oak meeting table with a little green centerpiece, TWO low sage chairs above it, TWO below it, ONE on each side, six chairs total. Same exact front-topdown view as reference, no diagonal rotation. Wide composition about216 wide by156 tall in game units. Leave a clean simple center tabletop. Chairs must be restrained and low, never throne-like. All six chair silhouettes fully inside canvas.",
+    "sofa": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE low terracotta three-seat office sofa, like the upper sofa on the lower-left rug in the dressed reference. Front-facing toward image bottom, visible top and fronts of exactly three plump rectangular cushions, dark brown thin outline, warm rust upholstery, low oak feet, modest arms. Long horizontal silhouette about216 wide by85 tall in game units. No pillows, no extra furniture, no floor rug.",
+    "bookshelf": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE narrow low oak bookshelf from the right edge of the reference lounge. It is oriented along the image's vertical axis in the floorplan, seen at the same top-down RPG angle. Tall narrow silhouette about60 wide by144 tall in game units, open face visible, several tidy shelves of muted teal, cream and rust book spines, a small green potted succulent on its top. No readable text on books. No unrelated plant outside bookshelf.",
+    "coffee_table": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE small horizontal oval oak coffee table like the center of the lower-left lounge in the reference. Simple rounded rectangular/oval honey oak top, dark brown small feet, ONE cream cup and ONE closed muted teal book. About108 wide by fifty-eight tall in game units. Same straight top-down RPG perspective, low height, no surrounding sofa or rug.",
+    "coffee_bar": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE long horizontal low oak coffee counter like the reference object in the middle-left hall. Dark teal compact espresso machine on LEFT, three cream mugs near center, tiny coffee container on right, open low cabinet below. About192 wide by seventy-two tall in game units. Straight-on top-down RPG camera with visible tabletop and modest cabinet front. No barstools, no floor, no extra large plants.",
+    "plant": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE broadleaf office plant in a terracotta pot like the large corner plants in the reference: five to seven chunky green leaves, sage highlights, dark olive shadows, warm rounded clay pot. Vertical compact silhouette about64 wide by88 tall in game units, pot base centered bottom. Same restrained pixel cluster scale as workstation. Do not draw a tree, multiple plants, floor patch or rug.",
+    "planter": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE long low oak rectangular planter box like the middle-right hall planter in the dressed reference. Dense modest sage and dark olive foliage, two tiny cream blossoms, a wooden box with low feet. Horizontal silhouette about100 wide by65 tall game units, no other furniture. Same top-down RPG angle, no tree, no fence or scenery.",
+    "wall_horizontal": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE modular horizontal low office partition WALL SEGMENT from the reference: cream inset wall panel above a dark teal lower panel, oak top trim, small square oak end caps. Straight horizontal with a subtly visible top edge, low dollhouse cutaway height. Game-sized96 pixels wide by36 pixels high. RECTANGULAR bounds, front faces image bottom. It must be reusable by placing adjacent segments along a horizontal wall, same consistent height, no door, no window glass, no corner turn. Transparent around the segment with margin.",
+    "wall_vertical": "Production transparent game sprite for the cozy pixel office. The visible ORIGINAL EMPTY OAK FLOOR and visible DRESSED OFFICE REFERENCE immediately above are the visual context; match both exactly: warm honey oak, dark brown fine pixel-cluster outlines, sage/teal upholstery, soft warm highlights, same straight three-quarter top-down RPG camera, all edges parallel to image axes, no isometric diagonal rotation. Match the furniture shown in the dressed reference, with readable detail at the scale of a 48x64 ZEP character. This is one reusable isolated scene object, not a full scene or screenshot. Genuine transparent background, generous clear margin on every side, full object visible, no floor, no cast shadow outside the object, no text, no UI, no characters, no watermark. Crisp pixel art texture and hard clean silhouette, no blurry painterly effects. Create ONE modular vertical-axis office partition WALL SEGMENT from the reference: long narrow cream inset panel, dark teal lower edge, oak thin trim and oak square end caps. It runs vertically from image top to bottom in map coordinates, with a narrow top face; NOT a tall front-facing horizontal wall rotated in perspective. Game-sized16 wide by96 high, aligned to image vertical axis, no diagonal slope. Reusable next to another segment end-to-end, full object visible. No door, no scene, no floor, no window glass."
+  }
+}
