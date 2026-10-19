@@ -1,3 +1,5 @@
+param([string]$PreviewOrigin)
+
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 
@@ -22,6 +24,15 @@ if (-not (Test-Path -LiteralPath (Join-Path $PSScriptRoot 'node_modules\vite\pac
   throw 'ยังไม่ได้ติดตั้งแพ็กเกจ กรุณารัน pnpm install ในโฟลเดอร์นี้ก่อน'
 }
 $env:Path = (Split-Path -Parent $officeNodeExecutable) + ';' + $env:Path
+if ($PreviewOrigin) {
+  Write-Host 'Building the protected team preview...' -ForegroundColor Cyan
+  & $officeNodeExecutable (Join-Path $PSScriptRoot 'node_modules\typescript\bin\tsc') --noEmit
+  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+  & $officeNodeExecutable (Join-Path $PSScriptRoot 'node_modules\vite\bin\vite.js') build
+  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+  & $officeNodeExecutable (Join-Path $PSScriptRoot 'scripts\start-tunnel-preview.mjs') $PreviewOrigin
+  exit $LASTEXITCODE
+}
 Write-Host ''
 Write-Host 'Assemble · Local demo' -ForegroundColor Green
 Write-Host 'เปิด http://localhost:4173 ในเบราว์เซอร์' -ForegroundColor Green

@@ -2,6 +2,17 @@
 
 ตรวจเมื่อ 18 ตุลาคม 2026
 
+## พรีวิวผ่าน ngrok — 19 ตุลาคม 2026
+
+- ทำซ้ำข้อผิดพลาดจากภาพได้: `GET /` ที่ localhost ตอบ 200 แต่ใส่ Host `nearby-awning-outing.ngrok-free.dev` ตอบ 403 พร้อมข้อความ `Blocked request`
+- เพิ่ม `--preview` และ launcher `pnpm preview:tunnel <https-origin>`; บน Windows ใช้ `start-demo.ps1 -PreviewOrigin <https-origin>` ซึ่ง build ให้ก่อน
+- โหมดพรีวิวใช้ static build และฐานข้อมูลแยก มีรหัสผ่านสุ่มก่อนเข้าเว็บ; ไม่เปิด Vite source server หรือยกเลิกกฎ Origin ของ dev ปกติ
+- Integration test ผ่าน HTTP จริง: Host แบบ ngrok เห็นหน้ารหัสผ่าน, ใส่รหัสถูกแล้วได้หน้า built app, ล็อกอินชื่อทดลองและรับ snapshot/ส่งแชตผ่าน WebSocket ได้
+- ตรวจการปฏิเสธรหัสผิด, Origin อื่น, cookie ปลอม, API และ WebSocket ที่ไม่มี cookie พรีวิว; cookie ใช้ HttpOnly/Secure และ redirect ไม่ออกนอกเว็บไซต์
+- `pnpm build` ผ่าน; `pnpm test` ผ่าน 38 tests; `pnpm check:production` ผ่าน และ production ยังปิด demo sign-in
+- ยังไม่ได้ยืนยันผ่าน ngrok tunnel ของผู้ใช้จริง เพราะไม่พบ ngrok agent ที่ localhost:4040 ใน workspace host นี้ ผู้ใช้ต้องหยุด dev server และเริ่ม protected preview ตาม README ก่อน
+- การ forward พอร์ตเว็บไม่ทดแทนการตั้งเครือข่าย LiveKit สำหรับเสียง วิดีโอ และแชร์หน้าจอจากเครื่องอื่น
+
 ## ปรับ UI ให้เรียบแบบ ZEP
 
 - แผนที่ใช้พื้นที่หลักเต็มหน้าต่าง ย้ายรายชื่อและห้องประชุมเป็นการ์ดลอยที่เปิด–ปิดได้

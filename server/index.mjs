@@ -10,18 +10,23 @@ import { installAuth } from './auth.mjs';
 import { Office } from './office.mjs';
 import { ROOMS } from '../shared/world.js';
 import { validAppearance } from '../shared/appearance.js';
+import { installPreviewGate, previewConfig } from './preview.mjs';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
 const production = process.argv.includes('--production');
+const preview = process.argv.includes('--preview');
+if (preview && production) throw new Error('เลือก --preview หรือ --production อย่างใดอย่างหนึ่ง');
+const previewSettings = preview ? previewConfig(process.env) : null;
 const number = (key, fallback, max) =>
   Math.max(1, Math.min(max, Number.parseInt(process.env[key] ?? String(fallback), 10) || fallback));
 const config = {
   port: number('PORT', 4173, 65535),
   host: process.env.HOST ?? '127.0.0.1',
-  origin: process.env.PUBLIC_ORIGIN ?? 'http://localhost:4173',
+  origin: previewSettings?.origin ?? process.env.PUBLIC_ORIGIN ?? 'http://localhost:4173',
   officeName: process.env.OFFICE_NAME ?? 'Assemble HQ',
   orgName: process.env.ORG_NAME ?? 'Assemble',
-  demo: !production && (process.env.AUTH_MODE ?? 'demo') === 'demo',
+  demo: preview || (!production && (process.env.AUTH_MODE ?? 'demo') === 'demo'),
+  preview,
   domains: (process.env.ALLOWED_DOMAINS ?? '')
     .toLowerCase()
     .split(',')
@@ -46,7 +51,7 @@ const localHosts = new Set(['localhost', '127.0.0.1', '[::1]']);
 if (
   config.demo &&
   (!['127.0.0.1', 'localhost', '::1'].includes(config.host) ||
-    !localHosts.has(new URL(config.origin).hostname))
+    (!preview && !localHosts.has(new URL(config.origin).hostname)))
 )
   throw new Error('โหมดเดโมเปิดได้เฉพาะ loopback เท่านั้น');
 if (
@@ -77,11 +82,19 @@ const sessionToken = (req) => {
     ? token
     : null;
 };
-const store = createStore(resolve(process.env.DATA_FILE ?? 'data/office.sqlite'), config.retention);
+if (preview && !existsSync('dist/index.html'))
+  throw new Error('กรุณารัน pnpm build ก่อนเปิดพรีวิว');
+const dataFile = preview
+  ? (process.env.PREVIEW_DATA_FILE ?? 'data/tunnel-preview.sqlite')
+  : (process.env.DATA_FILE ?? 'data/office.sqlite');
+if (preview && resolve(dataFile) === resolve(process.env.DATA_FILE ?? 'data/office.sqlite'))
+  throw new Error('พรีวิวต้องใช้ฐานข้อมูลแยกจากสำนักงาน');
+const store = createStore(resolve(dataFile), config.retention);
 store.cleanup();
 const app = express(),
   server = createServer(app);
 app.disable('x-powered-by');
+const previewGate = preview ? installPreviewGate(app, { ...previewSettings, secret }) : null;
 app.use((req, res, next) => {
   res.setHeader('Referrer-Policy', 'no-referrer');
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -94,7 +107,9 @@ app.use((req, res, next) => {
 });
 const allowedOrigins = new Set([
   config.origin,
-  ...(config.demo ? [`http://localhost:${config.port}`, `http://127.0.0.1:${config.port}`] : []),
+  ...(config.demo && !preview
+    ? [`http://localhost:${config.port}`, `http://127.0.0.1:${config.port}`]
+    : []),
 ]);
 const verifyOrigin = (req, res, next) => {
   if (!allowedOrigins.has(req.headers.origin) || !req.is('application/json'))
@@ -260,7 +275,11 @@ server.on('upgrade', (req, socket, head) => {
   if (new URL(req.url, config.origin).pathname !== '/ws') return;
   const token = sessionToken(req),
     user = store.session(token);
-  if (!allowedOrigins.has(req.headers.origin) || !user) {
+  if (
+    !allowedOrigins.has(req.headers.origin) ||
+    !user ||
+    (previewGate && !previewGate.authorized(req))
+  ) {
     socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
     socket.destroy();
     return;
@@ -275,7 +294,7 @@ server.on('upgrade', (req, socket, head) => {
         user,
         send,
         (code, text) => ws.close(code, text),
-        () => !!store.session(token),
+        () => !!store.session(token) && (!previewGate || previewGate.authorized(req)),
       );
     } catch (e) {
       send({ type: 'error', text: e.message });
@@ -336,7 +355,7 @@ const timers = [
     }
   }, 30_000),
 ];
-if (production) {
+if (production || preview) {
   app.use(express.static(resolve('dist')));
   app.get('/{*path}', (_req, res) => res.sendFile(resolve('dist/index.html')));
 } else {
@@ -353,7 +372,7 @@ app.use((err, _req, res, _next) => {
 });
 server.listen(config.port, config.host, () =>
   console.log(
-    `\n  Assemble Office\n  Local: http://localhost:${config.port}\n  ${config.demo ? 'Local demo · corporate sign-in is not connected' : 'Organization authentication'}\n`,
+    `\n  Assemble Office\n  Local: http://localhost:${config.port}\n  ${preview ? `Protected team preview: ${config.origin}` : config.demo ? 'Local demo · corporate sign-in is not connected' : 'Organization authentication'}\n`,
   ),
 );
 for (const signal of ['SIGINT', 'SIGTERM'])

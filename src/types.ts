@@ -69,6 +69,7 @@ export type Config = {
   officeName: string;
   orgName: string;
   demo: boolean;
+  preview?: boolean;
   providers: string[];
   mediaEnabled: boolean;
   maxOnline: number;

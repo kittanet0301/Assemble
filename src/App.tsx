@@ -146,7 +146,9 @@ function Login({ config, onLogin }: { config: Config; onLogin: (user: User) => v
             <div className="demo-notice">
               <Info size={17} />
               <span>
-                เดโมในเครื่อง · ใช้ชื่อทดลองได้เลย
+                {config.preview
+                  ? 'พรีวิวสำหรับทีม · ใช้ชื่อทดลองได้เลย'
+                  : 'เดโมในเครื่อง · ใช้ชื่อทดลองได้เลย'}
                 <br />
                 <small>บัญชีบริษัทจะเชื่อมในขั้นเปิดใช้งานจริง</small>
               </span>
@@ -759,7 +761,7 @@ function Office({ config, user, onLogout }: { config: Config; user: User; onLogo
           {config.demo && (
             <div className="local-badge">
               <span />
-              เดโมในเครื่อง
+              {config.preview ? 'พรีวิวสำหรับทีม' : 'เดโมในเครื่อง'}
             </div>
           )}
           {!connected && (
@@ -1359,7 +1361,14 @@ function Office({ config, user, onLogout }: { config: Config; user: User; onLogo
                 </div>
               </div>
               {[
-                ['รูปแบบใช้งาน', config.demo ? 'เดโมในเครื่อง' : 'สำนักงานองค์กร'],
+                [
+                  'รูปแบบใช้งาน',
+                  config.preview
+                    ? 'พรีวิวสำหรับทีม'
+                    : config.demo
+                      ? 'เดโมในเครื่อง'
+                      : 'สำนักงานองค์กร',
+                ],
                 [
                   'บัญชีบริษัท',
                   config.providers.length ? config.providers.join(' / ') : 'รอเชื่อมบัญชีองค์กร',
